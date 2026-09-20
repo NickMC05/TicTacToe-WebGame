@@ -48,3 +48,4 @@ To stop the server, press `Ctrl + C`.
 
 * [Game Rules](docs/RULES.md)
 * [Design & Implementation](docs/DESIGN.md)
+* [Transcript](transcript/README.md)
