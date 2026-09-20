@@ -26,7 +26,7 @@ To win the game, you must satisfy one of these rules:
    * Vertical
    * Diagonal
 4. If a player creates a line of three, they **win immediately**.
-5. If nobody has created a line of three after 8 moves, the player making the **9th move wins**.
+5. If no player has won before the board is full, the player who makes the 9th move wins.
 6. Once there is a winner, the game ends and no further moves can be made.
 
 ## Example

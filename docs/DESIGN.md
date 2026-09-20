@@ -23,25 +23,11 @@ This preserves the familiar Tic-Tac-Toe gameplay while satisfying the no-draw re
 
 ---
 
-## Rule Sets Considered
+## Rule Sets
 
-### 1. Standard Tic-Tac-Toe
+### Three-in-a-Row + 9th Move Wins
 
-**Rejected.**
-
-The standard rules allow a draw when all 9 spaces are occupied without a winning line. This conflicts with the requirement that the game cannot end without a winner.
-
-### 2. Last Move Always Wins
-
-**Rejected.**
-
-Under this rule, a player would only win by making the final move, making the normal three-in-a-row objective irrelevant. This makes the game less recognisably Tic-Tac-Toe.
-
-### 3. Three-in-a-Row + 9th Move Wins
-
-**Selected.**
-
-This keeps the standard winning condition while providing a deterministic outcome when no winning line exists.
+This keeps the standard winning condition while providing a winner when no winning line exists.
 
 * Three in a row → immediate win
 * No winner after 8 moves → 9th player wins
