@@ -23,17 +23,20 @@ class TicTacToeGame {
     }
 
     makeMove(index) {
+        // Ignore invalid moves
         if (this.gameOver || this.board[index] !== "") {
             return null;
         }
 
         const player = this.getCurrentPlayer();
 
+        // Place the player's mark
         this.board[index] = player;
         this.moveCount++;
 
         const result = this.getGameResult(player);
 
+        // End the game if there is a winner
         if (result !== null) {
             this.gameOver = true;
             return result;
@@ -48,15 +51,12 @@ class TicTacToeGame {
     }
 
     getGameResult(player) {
+        // Normal Tic-Tac-Toe win
         if (this.hasWinningLine(player)) {
             return player;
         }
 
-        /*
-         * Anti-draw rule:
-         * If the board is full without a normal winning line,
-         * the player who made the final move wins.
-         */
+        // If the board is full, the last player wins
         if (this.moveCount === TicTacToeGame.BOARD_SIZE) {
             return player;
         }
@@ -69,19 +69,8 @@ class TicTacToeGame {
             return combination.every(index => this.board[index] === player);
         });
     }
-
-    isDraw() {
-        /*
-         * A draw should never occur under the variant rules.
-         * This method exists as a defensive check.
-         */
-        return (
-            this.moveCount === TicTacToeGame.BOARD_SIZE &&
-            !this.hasWinningLine("X") &&
-            !this.hasWinningLine("O")
-        );
-    }
 }
+
 
 class TicTacToeUI {
     constructor(game) {
@@ -134,22 +123,14 @@ class TicTacToeUI {
 
     updateTurnIndicator() {
         const player = this.game.getCurrentPlayer();
-
-        const playerNumber =
-            player === "X" ? 1 : 2;
+        const playerNumber = player === "X" ? 1 : 2;
 
         this.turnIndicator.textContent =
             `Player ${playerNumber} (${player})'s turn`;
     }
 
     handleGameResult(winner) {
-        if (this.game.isDraw()) {
-            alert("Draw!");
-            return;
-        }
-
-        const playerNumber =
-            winner === "X" ? 1 : 2;
+        const playerNumber = winner === "X" ? 1 : 2;
 
         alert(`Player ${playerNumber} (${winner}) wins!`);
 
